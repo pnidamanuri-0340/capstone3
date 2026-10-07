@@ -1,0 +1,50 @@
+{
+    // Terminal > Run Task... (or Ctrl+Shift+P, "Tasks: Run Task")
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "FinLit: install / reinstall",
+            "type": "shell",
+            "command": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts\\install.ps1",
+            "problemMatcher": []
+        },
+        {
+            "label": "FinLit: run app",
+            "type": "shell",
+            "command": ".venv\\Scripts\\finlit.exe ui",
+            "isBackground": true,
+            "problemMatcher": []
+        },
+        {
+            "label": "FinLit: run tests",
+            "type": "shell",
+            "command": ".venv\\Scripts\\python.exe -m pytest",
+            "group": { "kind": "test", "isDefault": true },
+            "problemMatcher": []
+        },
+        {
+            "label": "FinLit: rebuild knowledge base",
+            "type": "shell",
+            "command": ".venv\\Scripts\\finlit.exe ingest",
+            "problemMatcher": []
+        },
+        {
+            "label": "FinLit: smoke test",
+            "type": "shell",
+            "command": ".venv\\Scripts\\finlit.exe smoke",
+            "problemMatcher": []
+        },
+        {
+            "label": "FinLit: evaluations",
+            "type": "shell",
+            "command": ".venv\\Scripts\\finlit.exe eval",
+            "problemMatcher": []
+        },
+        {
+            "label": "FinLit: build zip for another computer",
+            "type": "shell",
+            "command": ".venv\\Scripts\\python.exe scripts\\package.py",
+            "problemMatcher": []
+        }
+    ]
+}

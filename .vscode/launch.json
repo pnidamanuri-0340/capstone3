@@ -1,0 +1,61 @@
+{
+    // Run and Debug panel (Ctrl+Shift+D): pick a configuration and press F5.
+    // Breakpoints work in all of them.
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "FinLit: Streamlit app",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "streamlit",
+            "args": ["run", "src/finlit/ui/app.py", "--server.port", "8501", "--browser.gatherUsageStats", "false"],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "FinLit: ask one question (terminal)",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "finlit.cli",
+            "args": ["ask", "${input:question}"],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "FinLit: smoke test",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "finlit.cli",
+            "args": ["smoke"],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "FinLit: evaluations (routing + retrieval)",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "finlit.cli",
+            "args": ["eval"],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Python: current file",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        }
+    ],
+    "inputs": [
+        {
+            "id": "question",
+            "type": "promptString",
+            "description": "Question for FinLit",
+            "default": "What is an index fund?"
+        }
+    ]
+}
